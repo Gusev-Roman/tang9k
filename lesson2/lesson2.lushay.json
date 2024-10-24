@@ -1,0 +1,6 @@
+{
+    "name": "lesson2",
+    "includedFiles": "all",
+    "programMode": "ram",
+    "constraintsFile": "psram_qspi.cst"
+}
