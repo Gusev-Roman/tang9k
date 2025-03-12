@@ -8,10 +8,13 @@ module psram999
     inout [3:0] data,
     input [22:0] addr, // top input cannot be a register
     input cs_n,     // pull-up
-    input cor
+    output ready    // data moved to internal registry
 );
 
-localparam STARTUP_TIME = 4055; // ticks to init
+localparam STARTUP_TIME = 4055; // ticks to init, 150us
+localparam RSTEN = 8'h66;
+localparam RST = 8'h99;
+
 reg [11:0] tick_cnt = 12'b0;
 reg [7:0] cmd;
 reg [5:0] state;
@@ -24,8 +27,9 @@ assign state = 0;  // wait_for_ready
 always @(posedge clk) begin
     if(tick_cnt < STARTUP_TIME) begin
         tick_cnt = tick_cnt + 12'b1;
+        led1 <= 1;
     end else begin
-        led1 <= 1; // ready to work, 
+        led1 <= 0; // ready to work, 
         if(state == 0) begin
             state <= 1;
         end else if(state == 1) begin
@@ -35,6 +39,6 @@ always @(posedge clk) begin
 
 end
 
-assign led1 = 0;   // initial off
+//assign led1 = 0;   // initial off
 
 endmodule

@@ -1,5 +1,6 @@
 {
     "name": "lesson2",
+    "board": "tangnano9k",
     "includedFiles": "all",
     "programMode": "ram",
     "constraintsFile": "psram_qspi.cst"
