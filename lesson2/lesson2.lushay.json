@@ -3,5 +3,6 @@
     "board": "tangnano9k",
     "includedFiles": "all",
     "programMode": "ram",
-    "constraintsFile": "psram_qspi.cst"
+    "constraintsFile": "psram_qspi.cst",
+    "moduledebug": 1000
 }
